@@ -1,5 +1,4 @@
-#ifndef GRAFO_HPP
-#define GRAFO_HPP
+#pragma once
 
 #include "Aresta.hpp"
 #include <vector>
@@ -11,17 +10,13 @@ protected:
 public:
     Grafo(int n);
     ~Grafo();
-    void BFS();
-    void DFS();
+    std::vector<int> BFS();
+    std::vector<int> DFS();
     void ComponentesConexas();
     void TrilhaEuleriana();
     void ArestasPonte();
     void VerticesArticulacao();
-    void AdicionaAresta(int id, int u, int v, int peso);
     int VerificaConexidade();
     int VerificaBipartido();
-    int VerificaEuleriano();
     int VerificaCiclo(); 
 };
-
-#endif
