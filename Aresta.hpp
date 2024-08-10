@@ -1,10 +1,11 @@
-#ifndef ARESTA_HPP
-#define ARESTA_HPP
+#pragma once
 
 struct Aresta {
     int v_entrada;
     int peso;
     int id;
-};
 
-#endif
+    bool operator<(const Aresta& outra) {
+        return this->v_entrada < outra.v_entrada;
+    }
+};

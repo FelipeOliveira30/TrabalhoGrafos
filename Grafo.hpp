@@ -3,20 +3,23 @@
 #include "Aresta.hpp"
 #include <vector>
 
+typedef std::vector<Aresta> Lista;
+
 class Grafo {
 protected:
-    std::vector<Aresta>* listaAdj;
+    Lista* listaAdj;
     int qtdVertices;
 public:
     Grafo(int n);
     ~Grafo();
-    std::vector<int> BFS();
-    std::vector<int> DFS();
+    void Exibe_BFS();
+    void Exibe_DFS();
+    int* BFS();
+    int* DFS();
     void ComponentesConexas();
     void TrilhaEuleriana();
     void ArestasPonte();
     void VerticesArticulacao();
-    int VerificaConexidade();
     int VerificaBipartido();
     int VerificaCiclo(); 
 };
