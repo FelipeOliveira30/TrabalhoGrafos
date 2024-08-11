@@ -24,7 +24,7 @@ int* Grafo::BFS(){
             if(coloracao[a.v_entrada] == BRANCO){
                 coloracao[a.v_entrada] = CINZA;
                 fila.push(a.v_entrada);
-                pais[i] = atual;
+                pais[a.v_entrada] = atual;
             }
         }
         coloracao[atual] = PRETO;

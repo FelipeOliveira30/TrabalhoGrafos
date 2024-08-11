@@ -1,9 +1,9 @@
 #include <queue>
 #include <vector>
 #include <string>
-#include "Grafo.hpp"
+#include "GrafoDir.hpp"
 
-int Grafo::VerificaBipartido(){
+int GrafoDir::VerificaBipartido(){
     enum cores {BRANCO, AZUL, VERMELHO};
     cores coloracao[qtdVertices];
     for(int i = 1; i < qtdVertices; i++){

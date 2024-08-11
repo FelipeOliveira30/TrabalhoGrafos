@@ -20,6 +20,6 @@ public:
     void TrilhaEuleriana();
     void ArestasPonte();
     void VerticesArticulacao();
-    int VerificaBipartido();
     int VerificaCiclo(); 
+    void OrdenaLista();
 };

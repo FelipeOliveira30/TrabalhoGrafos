@@ -27,7 +27,7 @@ int* Grafo::DFS(){
                 pilha.push(a.v_entrada);
                 achou = true;
             }
-            pais[i] = atual;
+            pais[a.v_entrada] = atual;
             i++;
         }
         if(achou == false)

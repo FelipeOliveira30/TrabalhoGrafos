@@ -8,4 +8,13 @@ struct Aresta {
     bool operator<(const Aresta& outra) {
         return this->v_entrada < outra.v_entrada;
     }
+
+    bool comparaPeso(const Aresta& a, const Aresta& b){
+        return a.peso < b.peso;
+    }
+};
+
+struct OrdAresta{
+    Aresta aresta;
+    int v_saida;
 };
