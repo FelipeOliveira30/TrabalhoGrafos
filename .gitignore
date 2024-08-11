@@ -1,0 +1,8 @@
+#ignorar todos os arquivos com tipos especificos
+
+*.o
+*.exe
+
+#ignorar o arquivo de testes do programa
+
+/main.cpp

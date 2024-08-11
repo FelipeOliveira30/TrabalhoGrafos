@@ -4,6 +4,7 @@
 #include <string>
 #include "Grafo.hpp"
 
+
 int* Grafo::BFS(){
     enum cores {BRANCO, CINZA, PRETO};
     int* pais = new int[qtdVertices];
@@ -29,6 +30,7 @@ int* Grafo::BFS(){
         }
         coloracao[atual] = PRETO;
     }
+
     return pais;
 }
 

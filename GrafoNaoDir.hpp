@@ -11,4 +11,5 @@ class GrafoNaoDir : public Grafo {
         void AdicionaAresta(int id, int u, int v, int peso);
         void CaminhoMinimo();
         int VerificaConexidade();
+        int ComponentesConexas();
 };
