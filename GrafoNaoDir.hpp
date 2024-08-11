@@ -13,4 +13,5 @@ class GrafoNaoDir : public Grafo {
         void FluxoMaximo();
         void FechoTransitivo();
         int VerificaConexidade();
+        int ComponentesConexas();
 };

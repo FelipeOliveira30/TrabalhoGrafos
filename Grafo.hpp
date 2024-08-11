@@ -16,7 +16,6 @@ public:
     void Exibe_DFS();
     int* BFS();
     int* DFS();
-    void ComponentesConexas();
     void TrilhaEuleriana();
     void ArestasPonte();
     void VerticesArticulacao();
