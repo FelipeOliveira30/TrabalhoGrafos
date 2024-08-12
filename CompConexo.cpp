@@ -1,46 +1,87 @@
 #include <iostream>
+#include <vector>
 #include <queue>
 #include "GrafoNaoDir.hpp"
+#include "GrafoDir.hpp"
 
-int GrafoNaoDir:: ComponentesConexas(){
-    int num_componentes = 0;
+int GrafoDir::ComponentesFortementeConexas(){
     enum cores {BRANCO, CINZA, PRETO};
-
-    int* pais = new int[qtdVertices];
-    for(int i{0}; i < qtdVertices; i++)
-        pais[i] = i;
-    
     cores coloracao[qtdVertices];
     for(int i = 1; i < qtdVertices; i++){
         coloracao[i] = BRANCO;
     }
-
-    for(int i{0}; i < qtdVertices; i++){
-        if(coloracao[i] == BRANCO){
-            num_componentes++;
-            std::queue<int> fila;
-            fila.push(i);
-            coloracao[i] = CINZA;
-
-            
-            while(!fila.empty()){
-                int atual = fila.front();
-                fila.pop();
-                for(int j = 0; j < listaAdj[atual].size(); j++){
-                    Aresta a = listaAdj[atual][j];
-                    if(coloracao[a.v_entrada] == BRANCO){
-                        coloracao[a.v_entrada] = CINZA;
-                        fila.push(a.v_entrada);
-                        pais[a.v_entrada] = atual;
-                    }
+    std::queue<int> fila;
+    fila.push(0);
+    coloracao[0] = CINZA;
+    int num_componentes{1};
+    int v_pretos{0};
+    while(v_pretos < qtdVertices){
+        while(!fila.empty()){
+            int atual = fila.front();
+            fila.pop();
+            for(int i = 0; i < listaAdj[atual].size(); i++){
+                Aresta a = listaAdj[atual][i];
+                if(coloracao[a.v_entrada] == BRANCO){
+                    coloracao[a.v_entrada] = CINZA;
+                    fila.push(a.v_entrada);
                 }
-                coloracao[atual] = PRETO;
-                
             }
+            coloracao[atual] = PRETO;
+            v_pretos++;
+        }
+        bool achou = false;
+        int i{0};
+        while(achou == false and i < qtdVertices){
+            if(coloracao[i] == BRANCO){
+                num_componentes++;
+                achou = true;
+                coloracao[i] = CINZA;
+                fila.push(i);
+            }
+            i++;
         }
     }
-
-    delete [] pais;
-
     return num_componentes;
 }
+
+
+int GrafoNaoDir::ComponentesConexas(){
+    enum cores {BRANCO, CINZA, PRETO};
+    cores coloracao[qtdVertices];
+    for(int i = 1; i < qtdVertices; i++){
+        coloracao[i] = BRANCO;
+    }
+    std::queue<int> fila;
+    fila.push(0);
+    coloracao[0] = CINZA;
+    int num_componentes{1};
+    int v_pretos{0};
+    while(v_pretos < qtdVertices){
+        while(!fila.empty()){
+            int atual = fila.front();
+            fila.pop();
+            for(int i = 0; i < listaAdj[atual].size(); i++){
+                Aresta a = listaAdj[atual][i];
+                if(coloracao[a.v_entrada] == BRANCO){
+                    coloracao[a.v_entrada] = CINZA;
+                    fila.push(a.v_entrada);
+                }
+            }
+            coloracao[atual] = PRETO;
+            v_pretos++;
+        }
+        bool achou = false;
+        int i{0};
+        while(achou == false and i < qtdVertices){
+            if(coloracao[i] == BRANCO){
+                num_componentes++;
+                achou = true;
+                coloracao[i] = CINZA;
+                fila.push(i);
+            }
+            i++;
+        }
+    }
+    return num_componentes;
+}
+

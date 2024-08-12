@@ -8,7 +8,7 @@ class GrafoDir : public Grafo {
         GrafoDir(int n);
         void AdicionaAresta(int id, int u, int v, int peso);
         int VerificaEuleriano();
-        void CFC();
+        int ComponentesFortementeConexas();
         void OrdemTopologica();
         void FluxoMaximo();
         void FechoTransitivo();
