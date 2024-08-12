@@ -16,9 +16,11 @@ int* Grafo::DFS(){
     std::stack<int> pilha;
     pilha.push(0);
     coloracao[0] = CINZA;
+    int atual = pilha.top();
+    bool achou = false;
     while(!pilha.empty()){
-        int atual = pilha.top();
         bool achou = false;
+        int atual = pilha.top();
         int i = 0;
         while(achou != true && i < listaAdj[atual].size()){
             Aresta a = listaAdj[atual][i];
@@ -30,12 +32,14 @@ int* Grafo::DFS(){
             pais[a.v_entrada] = atual;
             i++;
         }
-        if(achou == false)
+        if(achou == false){
             pilha.pop();
-        coloracao[atual] = PRETO;
+            coloracao[atual] = PRETO;
+        }
     }
     return pais;
 }
+
 
 
 void Grafo::Exibe_DFS(){
@@ -57,13 +61,13 @@ void Grafo::Exibe_DFS(){
                 coloracao[a.v_entrada] = CINZA;
                 pilha.push(a.v_entrada);
                 achou = true;
-                            std::cout << a.id << " ";
-
+                std::cout << a.id << " ";
             }
             i++;
         }
-        if(achou == false)
+        if(achou == false){
             pilha.pop();
-        coloracao[atual] = PRETO;
+            coloracao[atual] = PRETO;
+        }
     }
 }

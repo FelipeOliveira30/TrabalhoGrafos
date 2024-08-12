@@ -13,5 +13,4 @@ class GrafoDir : public Grafo {
         void FluxoMaximo();
         void FechoTransitivo();
         int VerificaConexidade();
-        int VerificaBipartido();
 };

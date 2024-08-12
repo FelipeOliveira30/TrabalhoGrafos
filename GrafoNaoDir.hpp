@@ -12,4 +12,5 @@ class GrafoNaoDir : public Grafo {
         void CaminhoMinimo();
         int VerificaConexidade();
         int ComponentesConexas();
+        int VerificaBipartido();
 };

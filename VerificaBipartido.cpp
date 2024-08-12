@@ -1,9 +1,9 @@
 #include <queue>
 #include <vector>
 #include <string>
-#include "GrafoDir.hpp"
+#include "GrafoNaoDir.hpp"
 
-int GrafoDir::VerificaBipartido(){
+int GrafoNaoDir::VerificaBipartido(){
     enum cores {BRANCO, AZUL, VERMELHO};
     cores coloracao[qtdVertices];
     for(int i = 1; i < qtdVertices; i++){
@@ -12,10 +12,7 @@ int GrafoDir::VerificaBipartido(){
     int vertices_coloridos{0};
     std::queue<int> fila;
     fila.push(0);
-    if(listaAdj[0].size() != 0)
-        coloracao[0] = AZUL;
-    else 
-        coloracao[0] = VERMELHO;
+    coloracao[0] = AZUL;
     vertices_coloridos++;
     while(vertices_coloridos < qtdVertices){
         while(!fila.empty()){
@@ -42,10 +39,7 @@ int GrafoDir::VerificaBipartido(){
         bool achou = false;
         while(i < qtdVertices && achou == false){
             if(coloracao[i] == BRANCO){
-                if(listaAdj[i].size() != 0)
-                    coloracao[i] = AZUL;
-                else 
-                    coloracao[i] = VERMELHO;
+                coloracao[i] = AZUL;
                 fila.push(i);
                 achou = true;
                 vertices_coloridos++;
